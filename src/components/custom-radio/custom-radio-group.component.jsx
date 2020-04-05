@@ -22,6 +22,7 @@ class RadioGroup extends React.Component {
   onChange(selected, child) {
     this.options.forEach((option) => {
       if (option !== child) {
+        console.log(option);
         option.setSelected(!selected);
       }
     });

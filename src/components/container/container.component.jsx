@@ -13,13 +13,16 @@ class Container extends React.Component {
     "האם השליח היה אדיב",
     "האם האוכל הגיע לשביעות רצונך",
   ];
+  text = "";
+  phone = "";
 
   constructor() {
     super();
 
-    this.state = {
-      text: "",
-    };
+    // this.state = {
+    //   text: "",
+    //   phone: "",
+    // };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,15 +41,24 @@ class Container extends React.Component {
       text += question + ": ";
       text += (answers[index] ? answers[index] : "לא נענתה ") + ", \n";
     });
-    text += "תשובה בטקסט חופשי: " + this.state.text;
+    text += "תשובה בטקסט חופשי: " + this.state.text + ", ";
+    text += "מספר פלאפון של הלקוח: " + this.state.phone;
+
     console.log(text);
+
     this.sendFeedback(templateId, {
       send: text,
     });
   }
 
   handleChange = (e) => {
-    this.setState({ text: e.target.value });
+    const { name, value } = e.target;
+    if (name === "phone") {
+      this.phone = value;
+    } else {
+      this.text = value;
+    }
+    // this.setState({ [name]: value });
   };
 
   sendFeedback(templateId, variables) {
@@ -54,13 +66,10 @@ class Container extends React.Component {
       .send("gmail", templateId, variables)
       .then((res) => {
         console.log("Email successfully sent!");
+        alert("תודה על תגובתך, המשך יום נעים");
+        window.close();
       })
-      .catch((err) =>
-        console.error(
-          "Oh well, you failed. Here some thoughts on the error that occured:",
-          err
-        )
-      );
+      .catch((err) => alert("חלה שגיאה כלשהי " + err));
   }
 
   render() {
@@ -71,6 +80,13 @@ class Container extends React.Component {
           הי זו עדי מפסטה לוקו רצינו לוודא שהכל היה נעים וטעים . נודה על מילוי
           משוב קצר
         </span>
+        <textarea
+          name="phone"
+          className="phone"
+          onChange={this.handleChange}
+          placeholder="מה מספר הפלאפון שלך?"
+        ></textarea>
+
         {this.questions.map((question, index) => (
           <QuestionField
             onClick={this.handleClick}
@@ -82,6 +98,7 @@ class Container extends React.Component {
         <textarea
           onChange={this.handleChange}
           placeholder="כתוב לנו משהו אישי"
+          name="text"
         ></textarea>
         <button onClick={this.handleSubmit} className="send">
           שלח

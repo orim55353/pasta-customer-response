@@ -23,6 +23,12 @@
     direction: rtl;
     padding: 10px;
 
+    &.phone {
+      width: 25vw;
+      height: 5vh;
+      margin-bottom: 15px;
+    }
+
     &:focus {
       outline: none;
     }
