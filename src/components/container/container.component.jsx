@@ -4,6 +4,8 @@ import QuestionField from "../question-field/question-field.component";
 
 import "./container.styles.scss";
 
+import Logo from "../../assets/Pasta_loco_logo.png";
+
 class Container extends React.Component {
   answers = {};
   questions = [
@@ -28,40 +30,10 @@ class Container extends React.Component {
     console.log(this.answers);
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    fetch("http://localhost:3000", {
-      method: "POST",
-      body: JSON.stringify(this.state),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.status);
-        if (response.status === "success") {
-          alert("Message Sent.");
-          this.resetForm();
-        } else if (response.status === "fail") {
-          alert("Message failed to send.");
-        }
-      });
-  };
-
-  componentDidMount() {
-    const script = document.createElement("script");
-
-    script.src = "https://smtpjs.com/v3/smtp.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-  }
-
   render() {
     return (
       <div className="main">
+        <img src={Logo} />
         <span>
           הי זו עדי מפסטה לוקו רצינו לוודא שהכל היה נעים וטעים . נודה על מילוי
           משוב קצר

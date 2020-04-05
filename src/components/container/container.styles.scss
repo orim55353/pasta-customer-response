@@ -3,8 +3,13 @@
   flex-direction: column;
   align-items: center;
 
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
   span {
-    width: 50vw;
+    width: 40vw;
     font-size: larger;
     margin: 15px;
   }
