@@ -5,7 +5,7 @@ import RadioGroup from "../custom-radio/custom-radio-group.component";
 
 import "./question-field.styles.scss";
 
-let names = [1, 2, 3, 4, 5];
+let names = [5, 4, 3, 2, 1];
 
 class QuestionField extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class QuestionField extends React.Component {
       >
         <h3>{this.state.question}</h3>
         <RadioGroup name={this.props.index}>
-          {names.reverse().map((index) => (
+          {names.map((index) => (
             <Radio parentIndex={this.props.index} onClick={this.props.onClick}>
               {index}
             </Radio>
