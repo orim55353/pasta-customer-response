@@ -45,6 +45,8 @@ class Container extends React.Component {
             index={index}
           ></QuestionField>
         ))}
+        <h3>מסר אישי</h3>
+        <textarea placeholder="כתוב לנו משהו אישי"></textarea>
         <button onClick={this.handleSubmit} className="send">
           שלח
         </button>

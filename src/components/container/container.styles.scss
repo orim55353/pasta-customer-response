@@ -14,16 +14,31 @@
     margin: 15px;
   }
 
+  textarea {
+    resize: none;
+    width: 75vw;
+    height: 20vh;
+    border: 2px solid #53de1c;
+    font-size: medium;
+    direction: rtl;
+    padding: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   .send {
     width: 30vw;
     height: 40px;
     border-radius: 17px;
     border: 2px solid #53de1c;
     color: #53de1c;
-    font-size: medium;
+    font-size: large;
+    font-weight: bold;
     margin: 15px;
-    background-color: white;
     margin-bottom: 50px;
+    background-color: white;
 
     &:active {
       outline: 0;
