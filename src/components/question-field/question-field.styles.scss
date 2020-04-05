@@ -1,0 +1,24 @@
+.questionfield {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &.even {
+    background-color: lightgray;
+  }
+
+  .scorebuttons {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 30px;
+  }
+
+  h3 {
+    position: absolute;
+    top: 0;
+  }
+}

@@ -1,0 +1,26 @@
+.scorebutton {
+  width: 100%;
+  height: 40px;
+  border-radius: 17px;
+  border: 2px solid #4295f4;
+  color: #4295f4;
+  font-size: medium;
+
+  &.active {
+    outline: 0;
+    background-color: #357ae8;
+    color: white;
+    border: none;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 10px;
+  background-color: transparent;
+  min-height: 100px;
+  width: 15%;
+}
