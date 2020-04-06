@@ -19,11 +19,6 @@ class Container extends React.Component {
   constructor() {
     super();
 
-    // this.state = {
-    //   text: "",
-    //   phone: "",
-    // };
-
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -41,8 +36,8 @@ class Container extends React.Component {
       text += question + ": ";
       text += (answers[index] ? answers[index] : "לא נענתה ") + ", \n";
     });
-    text += "תשובה בטקסט חופשי: " + this.state.text + ", ";
-    text += "מספר פלאפון של הלקוח: " + this.state.phone;
+    text += "תשובה בטקסט חופשי: " + this.text + ", ";
+    text += "מספר פלאפון של הלקוח: " + this.phone;
 
     console.log(text);
 
@@ -58,7 +53,6 @@ class Container extends React.Component {
     } else {
       this.text = value;
     }
-    // this.setState({ [name]: value });
   };
 
   sendFeedback(templateId, variables) {
