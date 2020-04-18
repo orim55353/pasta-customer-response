@@ -29,21 +29,28 @@ class Container extends React.Component {
   }
 
   handleSubmit() {
-    const templateId = "pastatemp";
-    var text = "";
-    var answers = this.answers;
-    this.questions.forEach(function (question, index) {
-      text += question + ": ";
-      text += (answers[index] ? answers[index] : "לא נענתה ") + ", \n";
-    });
-    text += "תשובה בטקסט חופשי: " + this.text + ", ";
-    text += "מספר פלאפון של הלקוח: " + this.phone;
+    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (!this.phone.match(phoneno)) {
+      alert(
+        "אנא מלא את מספר הפלאפון שלך על מנת שנוכל לחזור אלייך במקרה של אי שביעות רצון באיכות המשלוח."
+      );
+    } else {
+      const templateId = "pastatemp";
+      var text = "";
+      var answers = this.answers;
+      this.questions.forEach(function (question, index) {
+        text += question + ": ";
+        text += (answers[index] ? answers[index] : "לא נענתה ") + ", \n";
+      });
+      text += "תשובה בטקסט חופשי: " + this.text + ", ";
+      text += "מספר פלאפון של הלקוח: " + this.phone;
 
-    console.log(text);
+      console.log(text);
 
-    this.sendFeedback(templateId, {
-      send: text,
-    });
+      this.sendFeedback(templateId, {
+        send: text,
+      });
+    }
   }
 
   handleChange = (e) => {
